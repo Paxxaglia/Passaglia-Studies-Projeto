@@ -4,7 +4,7 @@ class Button extends React.Component<{ children?: React.ReactNode }> {
     render() {
         return (
             <button className={style.botao}>
-                {this.props.children ? this.props.children : "Adicionarc"}
+                {this.props.children}
             </button>
         );
     }
