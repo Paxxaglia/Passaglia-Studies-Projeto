@@ -12,11 +12,34 @@ function App() {
 
   function selecionaTarefa(tarefaSelecionada: ITarefa) {
     setSelecionado(tarefaSelecionada);
+
     setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
       ...tarefa,
+
+      
+
       selecionado: tarefa.id === tarefaSelecionada.id ? true : false
-    })))
+    
+    }
+ 
+ )))
   }
+
+  function tiraTarefa(tarefaSelecionada: ITarefa) {
+    setSelecionado(tarefaSelecionada);
+
+    setTarefas(tarefasAnteriores => tarefasAnteriores.map(tarefa => ({
+      ...tarefa,
+
+      
+
+      selecionado: tarefaSelecionada.selecionado === true ? false : true 
+    
+    }
+ 
+ )))
+  }
+
   return (
     <div className={style.AppStyle}>
       <Formulario setTarefas={setTarefas} />
