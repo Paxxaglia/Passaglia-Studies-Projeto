@@ -1,30 +1,29 @@
-
-import { deflate } from "zlib";
-import style from './Lista.module.scss';
+import React from 'react';
+import { ITarefa } from '../../types/tarefa';
 import Item from './Item';
-import { ITarefa } from "../../types/tarefa";
+import style from './Lista.module.scss';
+
+interface Props {
+  tarefas: ITarefa[],
+  selecionaTarefa: (tarefaSelecionada: ITarefa) => void 
+}
 
 
-
-function Lista({ tarefas }: {tarefas: ITarefa[]}) {
-
-
-    return (
-        <aside className={style.listaTarefas}>
-            <h2 >Estudos do Dia</h2>
-            <ul >
-                {tarefas.map((item, index ) => (
-                    <Item 
-                    key={index}
-                    {...item}
-                    
-                    />
-                    
-                ))}
-
-            </ul>
-        </aside>
-    )
+function Lista({ tarefas, selecionaTarefa }: Props) {
+  return (
+    <aside className={style.listaTarefas}>
+      <h2> Estudos do dia </h2>
+      <ul>
+        {tarefas.map(item => (
+          <Item
+            selecionaTarefa={selecionaTarefa}
+            key={item.id}
+            {...item}
+          />
+        ))}
+      </ul>
+    </aside>
+  )
 }
 
 export default Lista;
